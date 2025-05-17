@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active{
+    background-color: rgb(213, 224, 232);
+    border-color: rgb(25, 21, 21);
+}
+
+select,input,textarea{
+    border: 1px solid rgb(238, 215, 215);
+    outline-color: rgb(218, 163, 163);
+    border-radius: 4px;
+}
