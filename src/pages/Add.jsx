@@ -175,12 +175,13 @@ const Add = ({ token }) => {
           <p className="mb-2">Product Features</p>
           <textarea
             onChange={(e) => {
-              const lines = e.target.value
-                .split("\n")
-                .filter((line) => line.trim() !== "");
-              setFeatures(lines);
+              const items = e.target.value
+                .split(",")
+                .map((item)=>item.trim())
+                .filter((item) => item !== "");
+              setFeatures(items);
             }}
-            value={features.join("\n")}
+            value={features.join(",")}
             className="w-full max-w-[500px] px-3 py-2"
             required
           />
@@ -235,12 +236,13 @@ const Add = ({ token }) => {
           <p className="mb-2">Product Sizes</p>
           <textarea
             onChange={(e) => {
-              const lines = e.target.value
-                .split("\n")
-                .filter((line) => line.trim() !== "");
-                 setSizes(lines); 
+              const items = e.target.value
+                .split(",")
+                .map((item) => item.trim())
+                .filter((item) => item !== "");
+              setSizes(items);
             }}
-            value={sizes.join("\n")} 
+            value={sizes.join(", ")} 
             className="w-full max-w-[500px] px-3 py-2"
             required
           />
