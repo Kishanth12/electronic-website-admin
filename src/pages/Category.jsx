@@ -14,7 +14,8 @@ const Category = () => {
     try {
       const deleCategory = await axios.delete(
         backendUrl + "/api/category/remove",
-        {data: {id} }
+        {data: {id} },
+         {headers: { token } }
       );
       if (deleCategory.data.success) {
         fetchCategory();
@@ -31,7 +32,8 @@ const Category = () => {
   const addCategory = async () => {
     try {
       const add = await axios.post(backendUrl + "/api/category/add", {
-        name: category,
+        name: category},
+         {headers: { token } 
       });
       if (add.data.success) {
         toast.success("Category added successfully");
@@ -55,7 +57,8 @@ const Category = () => {
     try {
       const res = await axios.put(backendUrl + "/api/category/edit", {
         id: editId,
-        name: editName,
+        name: editName},
+         {headers: { token } 
       });
 
       if (res.data.success) {
@@ -75,7 +78,7 @@ const Category = () => {
 
   const fetchCategory = async () => {
     try {
-      const categoryData = await axios.get(backendUrl + "/api/category/list");
+      const categoryData = await axios.get(backendUrl + "/api/category/list", {headers: { token } });
 
       if (categoryData.data.success) {
         setCategories(categoryData.data.categories);

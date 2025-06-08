@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { backendUrl } from "../App";
 
-const Brand = () => {
+const Brand = ({token}) => {
   const [brands, setBrands] = useState([]);
   const [brand, setBrand] = useState("");
   const [brandId, setBrandId] = useState(null);
@@ -14,7 +14,8 @@ const Brand = () => {
   const brandDelete = async (id) => {
     try {
       const deleteBrand = await axios.delete(backendUrl + "/api/brand/remove", {
-        data:{id},
+        data:{id}},
+        {headers: { token } 
       });
       if (deleteBrand.data.success) {
         fetchBrands();
@@ -30,8 +31,9 @@ const Brand = () => {
 
   const addBrand = async () => {
     try {
-      const add = await axios.post(backendUrl + "/api/brand/add", {
-        name: brand,
+      const add = await axios.post(backendUrl + "/api/brand/add", 
+        { name: brand},
+        {headers: { token } 
       });
       if (add.data.success) {
         toast.success("Brand added successfully");
@@ -48,7 +50,9 @@ const Brand = () => {
 
   const fetchBrands = async () => {
     try {
-      const brandData = await axios.get(backendUrl + "/api/brand/list");
+      const brandData = await axios.get(backendUrl + "/api/brand/list",
+         {headers: { token } }
+      );
 
       if (brandData.data.success) {
         setBrands(brandData.data.brands);
@@ -69,7 +73,8 @@ const Brand = () => {
     try {
       const updateRes = await axios.put(backendUrl + "/api/brand/edit", {
         name: editName,
-        id: brandId,
+        id: brandId},
+        {headers: { token } 
       });
       if (updateRes.data.success) {
         setBrandId("");

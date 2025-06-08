@@ -34,11 +34,11 @@ const App = () => {
             <SideBar />
             <div className="w-[70%] mx-auto ml-[max(5vw,25px)] my-8 text-gray-600 text-base">
               <Routes>
-                <Route path="/add" element={<Add token={setToken}/>} />
-                <Route path="/list" element={<List token={setToken} />} />
-                <Route path="/orders" element={<Order token={setToken} />} />
-                <Route path="/category" element={<Category token={setToken}/>}/>
-                <Route path="/brands" element={<Brand token={setToken}/>}/>
+                <Route path="/add" element={<Add token={token}/>} />
+                <Route path="/list" element={<List token={token} />} />
+                <Route path="/orders" element={<Order token={token} />} />
+                <Route path="/category" element={<Category token={token}/>}/>
+                <Route path="/brands" element={<Brand token={token}/>}/>
               </Routes>
             </div>
           </div>

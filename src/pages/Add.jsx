@@ -24,10 +24,10 @@ const Add = ({ token }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allCategories = await axios.post(
+        const allCategories = await axios.get(
           backendUrl + "/api/category/list"
         );
-        const allBrands = await axios.post(backendUrl + "/api/brand/list");
+        const allBrands = await axios.get(backendUrl + "/api/brand/list");
         if (allCategories.data.success) {
           setCategories(allCategories.data.categories);
         }
@@ -247,13 +247,12 @@ const Add = ({ token }) => {
             required
           />
         </div>
-        <div className="flex-gap-2 mt-2">
+        <div className="flex gap-2 mt-2">
           <input
             onChange={(e) => {
               setBestSeller((prev) => !prev);
             }}
             checked={bestSeller}
-            value={name}
             type="checkbox"
             id="bestseller"
           />
