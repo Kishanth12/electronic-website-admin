@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import axios from 'axios'
 import { backendUrl, currency } from './../App';
 import { toast } from 'react-toastify';
 import { assets } from '../assets/admin_assets/assets';
+
 const Order = ({token}) => {
   const[orders,setOrders]= useState([])
 
@@ -12,7 +13,7 @@ const Order = ({token}) => {
     }
 
     try {
-      const response = await axios.post(backendUrl+'/api/order/list',{},{headers:{token}})
+      const response = await axios.get(backendUrl+'/api/order/list',{headers:{token}})
       if(response.data.success){
         setOrders(response.data.orders)
       }else{

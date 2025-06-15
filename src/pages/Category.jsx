@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
-const Category = () => {
+const Category = ({token}) => {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
   const [editMode, setEditMode] = useState(false);
